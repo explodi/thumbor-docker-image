@@ -14,6 +14,7 @@
 # ENV PYTHONPATH /usr/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages
 FROM ubuntu:bionic
 RUN apt-get update -y
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y build-essential python-dev curl libjpeg-dev libpng-dev libtiff-dev libgtk2.0-dev python-numpy python-pycurl libwebp-dev python-opencv libjpeg-progs autoconf pkg-config nasm libtool python-pip libmagickcore-dev libmagickwand-dev libmagickwand-dev pngnq pngcrush pngquant
 RUN pip install --upgrade pip
 ENV THUMBOR_VERSION 6.3.2
