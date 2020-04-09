@@ -12,6 +12,9 @@ COPY --from=build /usr/bin/thumbor /usr/bin/thumbor-config /usr/bin/thumbor-url 
 COPY --from=build /usr/lib/libopenblas.so.3 /usr/lib/libopenblasp-r0.2.19.so /usr/lib/
 RUN ln -s /usr/local/bin/python /usr/bin/python
 ENV PYTHONPATH /usr/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages
-
-ENTRYPOINT ["/usr/bin/thumbor"]
+RUN thumbor-config /thumbor.conf
+ARG SECURITY_KEY
+RUN echo -e "\nSECURITY_KEY='#{SECURITY_KEY}'" >> /thumbor.conf
+RUN echo -e "\nALLOW_UNSAFE_URL=False"  >> /thumbor.conf
+ENTRYPOINT ["/usr/bin/thumbor","-c","/thumbor.conf"]
 EXPOSE 8888
