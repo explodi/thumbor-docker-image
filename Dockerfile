@@ -14,7 +14,7 @@ RUN ln -s /usr/local/bin/python /usr/bin/python
 ENV PYTHONPATH /usr/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages
 RUN thumbor-config /thumbor.conf
 ARG SECURITY_KEY
-RUN echo -e "\nSECURITY_KEY='#{SECURITY_KEY}'" >> /thumbor.conf
-RUN echo -e "\nALLOW_UNSAFE_URL=False"  >> /thumbor.conf
-ENTRYPOINT ["/usr/bin/thumbor","-c","/thumbor.conf"]
+ADD entrypoint.sh .
+RUN chmod +x entrypoint.sh
 EXPOSE 8888
+ENTRYPOINT ["sh","entrypoint.sh"]
