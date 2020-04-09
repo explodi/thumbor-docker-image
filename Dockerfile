@@ -21,7 +21,7 @@ ENV THUMBOR_VERSION 6.3.2
 RUN pip install pillow
 RUN pip install thumbor==${THUMBOR_VERSION}
 RUN thumbor-config /thumbor.conf
-ADD entrypoint.sh .
-RUN chmod +x entrypoint.sh
+ADD entrypoint.sh /entrypoint.sh 
+RUN chmod +x /entrypoint.sh
 EXPOSE 8888
-ENTRYPOINT ["sh","entrypoint.sh"]
+CMD "/entrypoint.sh"

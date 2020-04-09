@@ -1,0 +1,8 @@
+thumbor:
+  build: .
+  container_name: thumbor
+  ports:
+    - "8999:8999"
+  environment:
+    - SECURITY_KEY=abcde
+ 
