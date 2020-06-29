@@ -3,3 +3,5 @@ thumbor:
   container_name: thumbor
   ports:
     - "8888:8888"
+  environment:
+    - THUMBOR_SECURITY_KEY=bb7abcce3f9aef78bd43af3e62aa042eaa919b8c
